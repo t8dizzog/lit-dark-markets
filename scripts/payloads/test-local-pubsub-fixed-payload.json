@@ -1,0 +1,15 @@
+{
+  "eventType": "com.example.someevent",
+  "resource": "FooBar",
+  "eventId": "B234-1234-1234",
+  "timestamp": "2020-06-20T17:31:00Z",
+  "data": {
+    "data": "eyJmdW5jdGlvbiI6ImZvcmV4X3J0X3B1YiIsImJ1Y2tldCI6ImxpdC1kYXJrLW1hcmtldHMiLCJvYmplY3QiOiJjZnRjX3J0X2hlYWRlcnMuY3N2IiwiZmVlZF91cmwiOiJodHRwczovL2tnYzA0MTgtdGR3LWRhdGEtMC5zMy5hbWF6b25hd3MuY29tL2NmdGMvcnNzL0NGVENfUlNTX0ZPUkVYLnJzcyIsIm91dF90b3BpYyI6ImZvcmV4X3J0In0=",
+    "attributes": {
+      "foo": "bar",
+      "bar": "baz"
+    },
+    "messageId": "foo",
+    "publishTime": "2020-06-20T17:35:00Z"
+  }
+}
