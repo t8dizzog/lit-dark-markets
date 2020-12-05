@@ -1,0 +1,262 @@
+[
+	{
+		"name": "Dissemination_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Original_Dissemination_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Primary_Asset_Class",
+		"type": "STRING"
+	},
+	{
+		"name": "Product_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Action",
+		"type": "STRING"
+	},
+	{
+		"name": "Transaction_Type",
+		"type": "STRING"
+	},
+	{
+		"name": "Block_Trade_Election_Indicator",
+		"type": "STRING"
+	},
+	{
+		"name": "Cleared",
+		"type": "STRING"
+	},
+	{
+		"name": "Clearing_Exception_or_Exemption_Indicator",
+		"type": "STRING"
+	},
+	{
+		"name": "Day_Count_Convention",
+		"type": "STRING"
+	},
+	{
+		"name": "Effective_Date",
+		"type": "STRING"
+	},
+	{
+		"name": "Embedded_Option_Type",
+		"type": "STRING"
+	},
+	{
+		"name": "Event_Timestamp",
+		"type": "TIMESTAMP"
+	},
+	{
+		"name": "Exchange_Rate",
+		"type": "FLOAT"
+	},
+	{
+		"name": "Exchange_Rate_Basis",
+		"type": "STRING"
+	},
+	{
+		"name": "Execution_Timestamp",
+		"type": "TIMESTAMP"
+	},
+	{
+		"name": "Expiration_Date",
+		"type": "STRING"
+	},
+	{
+		"name": "First_Exercise_Date",
+		"type": "STRING"
+	},
+	{
+		"name": "Fixed_Rate_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Fixed_Rate_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Fixed_Recovery_CDS_Final_Price",
+		"type": "STRING"
+	},
+	{
+		"name": "Floating_Rate_Reset_Frequency_Period_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Floating_Rate_Reset_Frequency_Period_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Floating_Rate_Reset_Frequency_Period_Multiplier_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Floating_Rate_Reset_Frequency_Period_Multiplier_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Leg_1___Commodity_Underlyer_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Leg_2___Commodity_Underlyer_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Leg_1___Floating_Rate_Index",
+		"type": "STRING"
+	},
+	{
+		"name": "Leg_2___Floating_Rate_Index",
+		"type": "STRING"
+	},
+	{
+		"name": "Non_Standardized_Pricing_Indicator",
+		"type": "STRING"
+	},
+	{
+		"name": "Notional_Amount_1",
+		"type": "INTEGER"
+	},
+	{
+		"name": "Notional_Amount_2",
+		"type": "INTEGER"
+	},
+	{
+		"name": "Notional_Currency_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Notional_Currency_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Notional_Quantity_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Notional_Quantity_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Total_Notional_Quantity_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Total_Notional_Quantity_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Option_Entitlement",
+		"type": "STRING"
+	},
+	{
+		"name": "Option_Premium_Amount",
+		"type": "STRING"
+	},
+	{
+		"name": "Option_Premium_Currency",
+		"type": "STRING"
+	},
+	{
+		"name": "Other_Payment_Amount",
+		"type": "STRING"
+	},
+	{
+		"name": "Payment_Frequency_Period_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Payment_Frequency_Period_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Payment_Frequency_Period_Multiplier_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Payment_Frequency_Period_Multiplier_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Price_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Price_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Price_Unit_Of_Measure_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Price_Unit_Of_Measure_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Quantity_Frequency",
+		"type": "STRING"
+	},
+	{
+		"name": "Quantity_Unit_Of_Measure",
+		"type": "STRING"
+	},
+	{
+		"name": "Settlement_Currency_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Settlement_Currency_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Spread_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Spread_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Spread_Currency_1",
+		"type": "STRING"
+	},
+	{
+		"name": "Spread_Currency_2",
+		"type": "STRING"
+	},
+	{
+		"name": "Strike_Price",
+		"type": "STRING"
+	},
+	{
+		"name": "Strike_Price_Currency",
+		"type": "STRING"
+	},
+	{
+		"name": "Underlying_Asset_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Underlying_Asset_ID_Type",
+		"type": "STRING"
+	},
+	{
+		"name": "Underlying_Asset_Name",
+		"type": "STRING"
+	},
+	{
+		"name": "Leg_1___Commodity_Instrument_ID",
+		"type": "STRING"
+	},
+	{
+		"name": "Leg_2___Commodity_Instrument_ID",
+		"type": "STRING"
+	}
+]

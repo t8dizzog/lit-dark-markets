@@ -1,0 +1,117 @@
+[
+	{
+		"name": "header",
+		"type": "record",
+		"fields": [
+			{
+				"name": "messageType",
+				"type": "STRING"
+			},
+			{
+				"name": "sentTime",
+				"type": "STRING"
+			},
+			{
+				"name": "version",
+				"type": "STRING"
+			}
+		]
+	},
+	{
+		"name": "payload",
+		"type": "record",
+		"mode": "repeated",
+		"fields": [
+			{
+				"name": "lastUpdateTime",
+				"type": "TIMESTAMP"
+			},
+			{
+				"name": "tradeSummary",
+				"type": "record",
+				"fields": [
+					{
+						"name": "aggressorSide",
+						"type": "STRING"
+					},
+					{
+						"name": "mdTradeEntryId",
+						"type": "STRING"
+					},
+					{
+						"name": "tradePrice",
+						"type": "STRING"
+					},
+					{
+						"name": "tradeQty",
+						"type": "STRING"
+					},
+					{
+						"name": "tradeOrderCount",
+						"type": "STRING"
+					},
+					{
+						"name": "tradeUpdateAction",
+						"type": "STRING"
+					},
+					{
+						"name": "orderQty",
+						"type": "record",
+						"fields": [
+							{
+								"name": "orderId",
+								"type": "STRING"
+							},
+							{
+								"name": "lastOrdQty",
+								"type": "STRING"
+							}
+						]
+					}
+				]
+			},
+			{
+				"name": "instrument",
+				"type": "record",
+				"fields": [
+					{
+						"name": "definitionSource",
+						"type": "STRING"
+					},
+					{
+						"name": "exchangeMic",
+						"type": "STRING"
+					},
+					{
+						"name": "id",
+						"type": "STRING"
+					},
+					{
+						"name": "marketSegmentId",
+						"type": "STRING"
+					},
+					{
+						"name": "periodCode",
+						"type": "STRING"
+					},
+					{
+						"name": "productCode",
+						"type": "STRING"
+					},
+					{
+						"name": "productType",
+						"type": "STRING"
+					},
+					{
+						"name": "productGroup",
+						"type": "STRING"
+					},
+					{
+						"name": "symbol",
+						"type": "STRING"
+					}
+				]
+			}
+		]
+	}
+]

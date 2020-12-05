@@ -1,0 +1,4 @@
+feedparser==6.0.2
+google-cloud-storage==1.33.0
+google-cloud-pubsub==2.1.0
+google-cloud-logging==2.0.0

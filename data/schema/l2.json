@@ -1,0 +1,119 @@
+[
+	{
+		"name": "header",
+		"type": "record",
+		"fields": [
+			{
+				"name": "messageType",
+				"type": "STRING"
+			},
+			{
+				"name": "sentTime",
+				"type": "TIMESTAMP"
+			},
+			{
+				"name": "version",
+				"type": "STRING"
+			}
+		]
+	},
+	{
+		"name": "payload",
+		"type": "record",
+		"mode": "repeated",
+		"fields": [
+			{
+				"name": "tradingStatus",
+				"type": "STRING"
+			},
+			{
+				"name": "instrument",
+				"type": "record",
+				"fields": [
+					{
+						"name": "definitionSource",
+						"type": "STRING"
+					},
+					{
+						"name": "exchangeMic",
+						"type": "STRING"
+					},
+					{
+						"name": "id",
+						"type": "STRING"
+					},
+					{
+						"name": "marketSegmentId",
+						"type": "STRING"
+					},
+					{
+						"name": "periodCode",
+						"type": "STRING"
+					},
+					{
+						"name": "productCode",
+						"type": "STRING"
+					},
+					{
+						"name": "productGroup",
+						"type": "STRING"
+					},
+					{
+						"name": "productType",
+						"type": "STRING"
+					},
+					{
+						"name": "symbol",
+						"type": "STRING"
+					}
+				]
+			},
+			{
+				"name": "askLevel",
+				"type": "record",
+				"mode": "repeated",
+				"fields": [
+					{
+						"name": "lastUpdateTime",
+						"type": "TIMESTAMP"
+					},
+					{
+						"name": "orderCnt",
+						"type": "INTEGER"
+					},
+					{
+						"name": "price",
+						"type": "STRING"
+					},
+					{
+						"name": "qty",
+						"type": "INTEGER"
+					}
+				]
+			},
+			{
+				"name": "bidLevel",
+				"type": "record",
+				"mode": "repeated",
+				"fields": [
+					{
+						"name": "lastUpdateTime",
+						"type": "TIMESTAMP"
+					},
+					{
+						"name": "orderCnt",
+						"type": "INTEGER"
+					},
+					{
+						"name": "price",
+						"type": "STRING"
+					},
+					{
+						"name": "qty",
+						"type": "INTEGER"
+					}
+				]
+			}
+		]
+	}
+]
