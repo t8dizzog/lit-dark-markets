@@ -6,12 +6,30 @@
     "configurations": [
 
         {
-            "name": "Python: Current File",
+            "name": "Python: Normalize Forex DF Pipeline",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceRoot}/src/dataflow/normalize_forex.py",
             "console": "integratedTerminal",
-            "args": ["./data/messages/krw_trd_json_export.csv","TEST.SSCL.GCP.MD.RT.CMEG.JSON.v01000.TRD.XCME.KRW","5"]
+            "args": [
+                "--config_bucket=lit-dark-markets",
+                "--config_json=normalize_forex_config.json",
+                "--output_table=lit-dark-markets:canon.test_trades",
+                "--project=lit-dark-markets",
+                "--runner=DataflowRunner"
+            ]
+        },
+        {
+            "name": "Python: Replay Msg Utility",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceRoot}/src/cloud_function/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "./data/messages/krw_trd_json_export.csv",
+                "TEST.SSCL.GCP.MD.RT.CMEG.JSON.v01000.TRD.XCME.KRW",
+                "5"
+            ]
         }
     ]
 }

@@ -1,0 +1,41 @@
+{
+  "futures_subscriptions": [
+    "marketdata-trd-ho-json-sub",
+    "marketdata-trd-rp-json-sub",
+    "marketdata-trd-ils-json-sub",
+    "marketdata-trd-6l-json-sub",
+    "marketdata-trd-6m-json-sub",
+    "marketdata-trd-6n-json-sub",
+    "marketdata-trd-zar-json-sub",
+    "marketdata-trd-6b-json-sub",
+    "marketdata-trd-6s-json-sub",
+    "marketdata-trd-sir-json-sub",
+    "marketdata-trd-pln-json-sub",
+    "marketdata-trd-6z-json-sub",
+    "marketdata-trd-rf-json-sub",
+    "marketdata-trd-krw-json-sub",
+    "marketdata-trd-rmb-json-sub",
+    "marketdata-trd-czk-json-sub",
+    "marketdata-trd-6r-json-sub",
+    "marketdata-trd-psf-json-sub",
+    "marketdata-trd-6c-json-sub",
+    "marketdata-trd-rme-json-sub",
+    "marketdata-trd-m6b-json-sub",
+    "marketdata-trd-6a-json-sub",
+    "marketdata-trd-ry-json-sub",
+    "marketdata-trd-hoa-json-sub",
+    "marketdata-trd-hob-json-sub",
+    "marketdata-trd-1e-json-sub",
+    "marketdata-trd-hol-json-sub",
+    "marketdata-trd-1h-json-sub",
+    "marketdata-trd-mfc-json-sub",
+    "marketdata-trd-ufb-json-sub",
+    "marketdata-trd-chl-json-sub",
+    "marketdata-trd-hot-json-sub"
+  ],
+  "otc_subscriptions": [
+    "marketdata-forex-rt-json-sub"
+  ],
+  "output_bq_table": "name",
+  "output_pubsub_table": "name"
+}
