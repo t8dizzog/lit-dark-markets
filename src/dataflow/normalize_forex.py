@@ -1,10 +1,9 @@
 import argparse
-import datetime
 import json
-import pybase64
-
-
 import apache_beam as beam
+
+
+
 from apache_beam.options.pipeline_options import PipelineOptions
 import apache_beam.transforms.window as window
 
@@ -18,6 +17,7 @@ class WriteBatchesToGCS(beam.DoFn):
 
     def process(self, batch, window=beam.DoFn.WindowParam):
         """Write one batch per file to a Google Cloud Storage bucket. """
+        import apache_beam as beam
 
         mdy_format = "%Y/%b/%d"
         ts_format = "%H:%M"
@@ -37,7 +37,6 @@ class MakeBatchesByWindow(beam.PTransform):
     time and outputs a list of dictionaries, where each contains one message
     and its publish timestamp.
     """
-
     def __init__(self, window_size):
         # Convert minutes into seconds.
         self.window_size = int(window_size * 60)
@@ -62,13 +61,15 @@ class MakeBatchesByWindow(beam.PTransform):
 
 
 class AddTimestamps(beam.DoFn):
+    #TODO: Attribution
+    import apache_beam as beam
     def process(self, element, publish_time=beam.DoFn.TimestampParam):
         """Processes each incoming windowed element by extracting the Pub/Sub
         message and its publish timestamp into a dictionary. `publish_time`
         defaults to the publish timestamp returned by the Pub/Sub server. It
         is bound to each element by Beam at runtime.
         """
-
+        import datetime
         yield {
             "message_body": (element.data).decode("utf-8"),
                 # element['data'].decode('utf-8'),
@@ -167,7 +168,7 @@ parser.add_argument(
 parser.add_argument(
     "--gcs_output_path",
     type=str,
-    default="gs://lit-dark-markets-audit",
+    default="gs://lit-dark-markets-audit/",
     help="Path for GCS audit output; include filename prefix (but not event type).\n",
 )
 parser.add_argument(

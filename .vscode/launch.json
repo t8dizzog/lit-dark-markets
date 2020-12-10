@@ -20,7 +20,7 @@
                 "--gcs_output_path=gs://lit-dark-markets-audit/",
                 "--window_size=1.0",
                 "--project=lit-dark-markets",
-                "--runner=DirectRunner"
+                "--runner=DataflowRunner"
             ]
         },
         {
