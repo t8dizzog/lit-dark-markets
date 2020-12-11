@@ -1,30 +1,50 @@
 import argparse
 import json
+
 import apache_beam as beam
-
-
-
 from apache_beam.options.pipeline_options import PipelineOptions
 import apache_beam.transforms.window as window
 
 from google.cloud import storage
 
+class ConvertToStandardFormat(beam.DoFn):
+    
+    def process(self, element):
+        import apache_beam as beam
+        import json
+        import logging
+        from datetime import datetime
+    
+        logging.info(f"element.data: \n{element.data}")
+        logging.info(f"element: \n{element}")
+        logging.info(f"element.attributes: \n{element.attributes}")
+
+        payload =json.loads(element.data.decode("utf-8"))
+        trade_summary = payload.get("tradeSummary")
+        instrument = payload.get("instrument")
+        ts = int(element.attributes.get("SendingTime"))
+        timestamp = datetime.utcfromtimestamp(ts).strftime('%Y-%m-%dT%H:%M:%S.%f000')
+        logging.info(f"timestamp: \n{timestamp}")
+
+        trade_id = trade_summary.get("mdTradeEntryId")
+        logging.info(f"trade_id: \n{trade_id}")
 
 class WriteBatchesToGCS(beam.DoFn):
     # TODO: Attribution
-    def __init__(self, gcs_output_path):
+    def __init__(self, gcs_output_path, filename_prefix=""):
         self.gcs_output_path = gcs_output_path
+        self.filename_prefix = filename_prefix
 
     def process(self, batch, window=beam.DoFn.WindowParam):
         """Write one batch per file to a Google Cloud Storage bucket. """
         import apache_beam as beam
 
         mdy_format = "%Y/%b/%d"
-        ts_format = "%H:%M"
+        ts_format = "%H%M"
         window_start = window.start.to_utc_datetime().strftime(ts_format)
         window_end = window.end.to_utc_datetime().strftime(ts_format)
         mdy = window.start.to_utc_datetime().strftime(mdy_format)
-        filename = "/".join([self.gcs_output_path, mdy, window_start+"-"+window_end])
+        filename = "/".join([self.gcs_output_path, mdy, f"{self.filename_prefix}{window_start}_{window_end}.txt"])
 
         with beam.io.gcp.gcsio.GcsIO().open(filename=filename, mode="w") as f:
             for element in batch:
@@ -99,13 +119,19 @@ def run(config_bucket, input_subscription_json, otc_subscription, bq_output_tabl
 
     for sub in subs:
         key = sub.rsplit("-", 3)[1]
-        p_coll = p | f"read trades: {key} sub" >> beam.io.ReadFromPubSub(
+        p_coll = p | f"Read trades: {key} sub" >> beam.io.ReadFromPubSub(
             subscription=sub, with_attributes=True)
         subs_dict[key] = p_coll
         print(f"Just added key {key}\n")
 
-    merged_pcolls = subs_dict.values() | "merge forex trades subscriptions" >> beam.Flatten(
-    ) | "Window into" >> MakeBatchesByWindow(window_size) | "Write to GCS" >> beam.ParDo(WriteBatchesToGCS(gcs_output_path))
+    merged_pcolls = subs_dict.values() | "Merge forex trades subscriptions" >> beam.Flatten(
+    )
+    
+    merged_pcolls | "Window into" >> MakeBatchesByWindow(window_size) | "Write to GCS" >> beam.ParDo(WriteBatchesToGCS(
+        gcs_output_path,"trade_")) 
+        
+    merged_pcolls | "Convert to vendor-agnostic JSON trade format" >> beam.ParDo(
+        ConvertToStandardFormat()) 
 
     result = p.run()
     result.wait_until_finish()
