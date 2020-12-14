@@ -11,8 +11,8 @@ class EnrichCmeTrades(beam.DoFn):
 
     def process(self, element, static_data):
         import logging
-        curr_pair = static_data.get("product_code")
         logging.info(f"static_data:\n {static_data}")
+        curr_pair = static_data.get("product_code")
         logging.info(f"curr_pair:\n {curr_pair}")
         curr_pair_l = curr_pair.split("_")
         element["currency_pair"]=curr_pair
@@ -148,11 +148,12 @@ def run(config_bucket, input_subscription_json, otc_subscription, bq_output_tabl
     subs = config_dict.get("futures_subscriptions")
     subs_dict = {}
 
+
     #side_p = beam.Pipeline(options=pipeline_options)
     p = beam.Pipeline(options=pipeline_options)
 
     #Get static product data as a side input
-    #mapping_p_coll = p | "Read product static data" >> beam.io.gcp.bigquery.ReadFromBigQuery(query=side_input_query)
+    mapping_p_coll = p | "Read product static data" >> beam.io.gcp.bigquery.ReadFromBigQuery(query=side_input_query, use_standard_sql=False)
 
     for sub in subs:
         key = sub.rsplit("-", 3)[1]
@@ -167,10 +168,10 @@ def run(config_bucket, input_subscription_json, otc_subscription, bq_output_tabl
     merged_pcolls | "Window into" >> MakeBatchesByWindow(window_size) | "Write to GCS" >> beam.ParDo(WriteBatchesToGCS(
         gcs_output_path,"trade_")) 
         
-    merged_pcolls | "Convert to vendor-agnostic JSON trade format" >> beam.ParDo(
-       ConvertToStandardFormat()) 
+    flattend_cme_p_coll = merged_pcolls | "Convert to vendor-agnostic JSON trade format" >> beam.ParDo(
+       ConvertToStandardFormat())
     
-    #merged_pcolls | "Enrich with static data" >> beam.ParDo(EnrichCmeTrades(), data=beam.pvalue.AsDict(mapping_p_coll))
+    flattend_cme_p_coll | "Enrich with static data" >> beam.ParDo(EnrichCmeTrades(), static_data=beam.pvalue.AsDict(mapping_p_coll))
         
 
     result = p.run()

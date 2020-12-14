@@ -21,7 +21,7 @@
                 "--project=lit-dark-markets",
                 "--runner=DataflowRunner",
                 "--temp_location=gs://lit-dark-markets/temp",
-                "--side_input_query=select symbol,currency_pair from lit-dark-markets.fx.product_symbol",
+                "--side_input_query=select symbol,currency_pair from fx.product_symbol",
                 "--window_size=1.0"
                 
             ]
