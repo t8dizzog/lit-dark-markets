@@ -17,10 +17,13 @@
                 "--otc_subscription=projects/lit-dark-markets/subscriptions/marketdata-forex-rt-json-sub",
                 "--bq_output_table=lit-dark-markets:canon.test_trades",
                 "--pubsub_output_topic=projects/lit-dark-markets/topics/marketdata-normalized-fx-trades-json",
-                "--gcs_output_path=gs://lit-dark-markets-audit/",
-                "--window_size=1.0",
+                "--gcs_output_path=gs://lit-dark-markets-audit",
                 "--project=lit-dark-markets",
-                "--runner=DataflowRunner"
+                "--runner=DataflowRunner",
+                "--temp_location=gs://lit-dark-markets/temp",
+                "--side_input_query=select symbol,currency_pair from lit-dark-markets.fx.product_symbol",
+                "--window_size=1.0"
+                
             ]
         },
         {
